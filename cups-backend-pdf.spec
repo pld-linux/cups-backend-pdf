@@ -27,7 +27,7 @@ cd src
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/cups/backend,%{_sysconfdir}/cups,%{_datadir}/cups/model}
+install -d $RPM_BUILD_ROOT{%{_libdir}/cups/backend,%{_sysconfdir}/cups,%{_datadir}/cups/model,%{_var}/spool/%{name}}
 
 install src/cups-pdf $RPM_BUILD_ROOT%{_libdir}/cups/backend
 install extra/cups-pdf.conf  $RPM_BUILD_ROOT%{_sysconfdir}/cups
@@ -48,3 +48,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/cups/backend/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/cups/%{name}.conf
 %{_datadir}/cups/model/PostscriptColor.ppd
+%dir %{_var}/spool/%{name}
