@@ -1,8 +1,8 @@
 #
 #TODO - add contrib dir
 
-Summary:	CUPS-PDF
-Summary(pl.UTF-8):	CUPS-PDF
+Summary:	CUPS-PDF driver
+Summary(pl.UTF-8):	Sterownik CUPS-PDF
 Name:		cups-pdf
 Version:	2.4.6
 Release:	0.1
@@ -18,12 +18,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 CUPS-PDF is designed to produce PDF files in a heterogeneous network
 by providing a PDF printer on the central fileserver.
 
+%description -l pl.UTF-8
+CUPS-PDF służy do tworzenia plików PDF w środowisku heterogenicznym
+poprzez udostępnienie drukarki PDF na centralnym serwerze plików.
+
 %prep
 %setup -q
 
 %build
 cd src
-%{__cc} -O9 -s -o cups-pdf cups-pdf.c
+%{__cc} %{rpmldflags} %{rpmcflags} -o cups-pdf cups-pdf.c
 
 %install
 rm -rf $RPM_BUILD_ROOT
