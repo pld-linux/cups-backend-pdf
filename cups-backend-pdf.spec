@@ -5,7 +5,7 @@ Summary:	CUPS-PDF driver
 Summary(pl.UTF-8):	Sterownik CUPS-PDF
 Name:		cups-pdf
 Version:	2.4.6
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications
 Source0:	http://www.cups-pdf.de/src/%{name}_%{version}.tar.gz
@@ -13,6 +13,8 @@ Source0:	http://www.cups-pdf.de/src/%{name}_%{version}.tar.gz
 URL:		http://www.cups-pdf.de/
 Requires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define         _libdir         %(cups-config --serverbin 2>/dev/null)
 
 %description
 CUPS-PDF is designed to produce PDF files in a heterogeneous network
@@ -31,9 +33,9 @@ cd src
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/cups/backend,%{_sysconfdir}/cups,%{_datadir}/cups/model,%{_var}/spool/%{name}}
+install -d $RPM_BUILD_ROOT{%{_libdir}/backend,%{_sysconfdir}/cups,%{_datadir}/cups/model,%{_var}/spool/%{name}}
 
-install src/cups-pdf $RPM_BUILD_ROOT%{_libdir}/cups/backend
+install src/cups-pdf $RPM_BUILD_ROOT%{_libdir}/backend
 install extra/cups-pdf.conf  $RPM_BUILD_ROOT%{_sysconfdir}/cups
 install extra/PostscriptColor.ppd $RPM_BUILD_ROOT%{_datadir}/cups/model
 
@@ -49,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%attr(755,root,root) %{_libdir}/cups/backend/%{name}
+%attr(755,root,root) %{_libdir}/backend/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/cups/%{name}.conf
 %{_datadir}/cups/model/PostscriptColor.ppd
 %dir %{_var}/spool/%{name}
