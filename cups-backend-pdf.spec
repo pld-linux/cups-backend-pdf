@@ -4,13 +4,15 @@
 Summary:	CUPS-PDF driver
 Summary(pl.UTF-8):	Sterownik CUPS-PDF
 Name:		cups-pdf
-Version:	2.4.6
-Release:	2
+Version:	2.4.7
+Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://www.cups-pdf.de/src/%{name}_%{version}.tar.gz
-# Source0-md5:	610a2e1d9ecd27ab978efaa6d93ddba3
+# Source0-md5:	46f73553336842dd67521da117bfc67e
 URL:		http://www.cups-pdf.de/
+BuildRequires:	cups-devel
+Requires:	cups
 Requires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,7 +39,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/backend,%{_sysconfdir}/cups,%{_datadir}/cu
 
 install src/cups-pdf $RPM_BUILD_ROOT%{_libdir}/backend
 install extra/cups-pdf.conf  $RPM_BUILD_ROOT%{_sysconfdir}/cups
-install extra/PostscriptColor.ppd $RPM_BUILD_ROOT%{_datadir}/cups/model
+install extra/CUPS-PDF.ppd $RPM_BUILD_ROOT%{_datadir}/cups/model
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -51,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%attr(755,root,root) %{_libdir}/backend/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/cups/%{name}.conf
-%{_datadir}/cups/model/PostscriptColor.ppd
+%attr(700,root,root) %{_libdir}/backend/%{name}
+%{_datadir}/cups/model/CUPS-PDF.ppd
 %dir %{_var}/spool/%{name}
