@@ -4,12 +4,12 @@
 Summary:	CUPS-PDF driver
 Summary(pl.UTF-8):	Sterownik CUPS-PDF
 Name:		cups-pdf
-Version:	2.4.8
+Version:	2.5.0
 Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://www.cups-pdf.de/src/%{name}_%{version}.tar.gz
-# Source0-md5:	0d17dc5e094b366c8ad43cc27c7f82c9
+# Source0-md5:	9194af099a8c0e9aa213505b29ec6818
 URL:		http://www.cups-pdf.de/
 BuildRequires:	cups-devel
 Requires:	cups
