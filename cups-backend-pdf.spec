@@ -1,5 +1,7 @@
 # TODO
 # - add contrib dir
+# - spool & results in same dir is not good?
+#   /var/spool/cups-pdf/SPOOL
 Summary:	CUPS PDF driver
 Summary(pl.UTF-8):	Sterownik CUPS-PDF
 Name:		cups-backend-pdf
@@ -36,7 +38,7 @@ cd src
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/backend,%{_sysconfdir}/cups,%{_datadir}/cups/model,%{_var}/spool/cups-pdf}
+install -d $RPM_BUILD_ROOT{%{_libdir}/backend,%{_sysconfdir}/cups,%{_datadir}/cups/model,%{_var}/spool/cups-pdf/SPOOL}
 cp -a src/cups-pdf $RPM_BUILD_ROOT%{_libdir}/backend
 cp -a extra/cups-pdf.conf  $RPM_BUILD_ROOT%{_sysconfdir}/cups
 cp -a extra/CUPS-PDF.ppd $RPM_BUILD_ROOT%{_datadir}/cups/model
@@ -59,3 +61,4 @@ fi
 %attr(700,root,root) %{_libdir}/backend/cups-pdf
 %{_datadir}/cups/model/CUPS-PDF.ppd
 %dir %{_var}/spool/cups-pdf
+%dir %attr(751,root,lp) %{_var}/spool/cups-pdf/SPOOL
