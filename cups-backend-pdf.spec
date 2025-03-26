@@ -5,12 +5,12 @@
 Summary:	CUPS PDF driver
 Summary(pl.UTF-8):	Sterownik CUPS-PDF
 Name:		cups-backend-pdf
-Version:	3.0.1
+Version:	3.0.2
 Release:	1
 License:	GPL v2
 Group:		Applications/Printing
 Source0:	https://www.cups-pdf.de/src/cups-pdf_%{version}.tar.gz
-# Source0-md5:	5071bf192b9c6eb5ada4337b6917b939
+# Source0-md5:	276402ca8d7ac1f249cdaf3c34bdfc51
 URL:		https://www.cups-pdf.de/
 BuildRequires:	cups-devel
 Requires:	cups
